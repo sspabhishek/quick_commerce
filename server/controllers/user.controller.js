@@ -236,6 +236,8 @@ export async function uploadAvatar(request, response) {
 
         return response.json({
             message: "upload profile",
+            success: true,
+            error: false,
             data: {
                 _id: userId,
                 avatar: upload.url
@@ -275,7 +277,7 @@ export async function updateUserDetails(request, response) {
         })
 
         return response.json({
-            message: "User updated successfully",
+            message: "Updated successfully",
             error: false,
             success: true,
             data: updateUser
@@ -471,7 +473,7 @@ export async function resetPassword(request, response) {
 
 export async function refreshToken(request, response) {
     try {
-        const refreshToken = request.cookies.refreshToken  || request?.header?.authorization?.split(" ")[1]   // [Bearer, token]
+        const refreshToken = request.cookies.refreshToken  || request?.headers?.authorization?.split(" ")[1]   // [Bearer, token]
 
         if(!refreshToken){
             return response.status(401).json({

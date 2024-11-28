@@ -17,7 +17,6 @@ const Search = () => {
 
     }, [location])
 
-    console.log("Search", isSearchPage);
 
 
     const redirecToSearchPage = () => {

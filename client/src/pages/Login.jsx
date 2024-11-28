@@ -6,7 +6,9 @@ import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
 import AxiosToastError from '../utils/AxiosToastError';
 import { Link, useNavigate } from 'react-router-dom';
-
+import fatchUserDetails from '../utils/fatchUserDetails';
+import { useDispatch } from 'react-redux';
+import { setUserDetails } from '../store/userSlice';
 
 
 const Login = () => {
@@ -16,6 +18,7 @@ const Login = () => {
   })
   const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -47,6 +50,10 @@ const Login = () => {
         toast.success(response.data.message)
         localStorage.setItem('accesstoken',response.data.data.accesstoken)
         localStorage.setItem('refreshtoken',response.data.data.refreshtoken)
+
+        const userDetails = await fatchUserDetails()
+        dispatch(setUserDetails(userDetails.data))
+
         setData({
           email: "",
           password: "",
