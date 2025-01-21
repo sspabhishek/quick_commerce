@@ -1,13 +1,15 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-dotenv.config()
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
 import helmet from 'helmet'
 import connectDB from './config/connectDB.js'
 import userRouter from './route/user.route.js'
+import categoryRouter from './route/category.route.js'
+import uploadRouter from './route/upload.route.js'
 
+dotenv.config()
 
 const app = express()
 
@@ -33,6 +35,8 @@ app.get('/', (request, response) => {
 })
 
 app.use('/api/user',userRouter)
+app.use('/api/category',categoryRouter)
+app.use("/api/file", uploadRouter)
 
 connectDB().then(() => {
     app.listen(PORT, () => {
