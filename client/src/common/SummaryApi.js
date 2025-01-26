@@ -1,3 +1,5 @@
+
+
 export const baseURL = "http://localhost:8080"
 
 const SummaryApi = {
@@ -59,6 +61,22 @@ const SummaryApi = {
     },
     deleteCategory : {
         url : '/api/category/delete',
+        method : 'delete'
+    },
+    createSubCategory : {
+        url : '/api/subCategory/create',
+        method : 'post'
+    },
+    getSubCategory : {
+        url : '/api/subCategory/get',
+        method : 'post'
+    },
+    updateSubCategory : {
+        url : '/api/subCategory/update',
+        method : 'put'
+    },
+    deleteSubCategory : {
+        url : '/api/subCategory/delete',
         method : 'delete'
     },
 }
