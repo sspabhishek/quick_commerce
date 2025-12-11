@@ -11,6 +11,7 @@ import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
 import AxiosToastError from '../utils/AxiosToastError';
 import successAlert from '../utils/successAlert';
+import { useEffect } from 'react';
 
 const UploadProduct = () => {
   const [data, setData] = useState({
@@ -119,6 +120,18 @@ const UploadProduct = () => {
       const { data : responseData } = response
       if(responseData.success){
         successAlert(responseData.message)
+        setData({
+          name: "",
+          image: [],
+          category: [],
+          subCategory: [],
+          unit: "",
+          stock: "",
+          price: "",
+          discount: "",
+          description: "",
+          more_details: {}
+        })
 
       }
     } catch (error) {
@@ -127,6 +140,9 @@ const UploadProduct = () => {
     }
     
   }
+  // useEffect(()=>{
+  //   successAlert("Product Created Successfully")
+  // },[])
   return (
     <section>
       <div className='p-2 bg-white shadow-md flex items-center justify-between'>
