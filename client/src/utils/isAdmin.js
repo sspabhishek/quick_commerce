@@ -1,8 +1,9 @@
-const isAdmin = (s) =>{
+const isAdmin = (s)=>{
     if(s === 'ADMIN'){
-        return true;
+        return true
     }
-    return false;
+
+    return false
 }
 
-export default isAdmin;
+export default isAdmin

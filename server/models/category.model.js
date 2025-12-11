@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const categorySchema = new mongoose.Schema({
     name : {
         type : String,
-        default : "",
+        default : ""
     },
     image : {
         type : String,
@@ -11,8 +11,8 @@ const categorySchema = new mongoose.Schema({
     }
 },{
     timestamps : true
-});
+})
 
-const CategoryModel = mongoose.model('category', categorySchema);
+const CategoryModel = mongoose.model('category',categorySchema)
 
-export default CategoryModel;
+export default CategoryModel

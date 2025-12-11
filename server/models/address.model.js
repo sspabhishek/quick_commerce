@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const addressSchema = new mongoose.Schema({
     address_line : {
         type : String,
-        required : ""
+        default : ""
     },
     city : {
         type : String,
@@ -14,11 +14,10 @@ const addressSchema = new mongoose.Schema({
         default : ""
     },
     pincode : {
-        type : String,
-        default : ""
+        type : String
     },
     country : {
-        type : String,
+        type : String
     },
     mobile : {
         type : Number,
@@ -27,11 +26,15 @@ const addressSchema = new mongoose.Schema({
     status : {
         type : Boolean,
         default : true
+    },
+    userId : {
+        type : mongoose.Schema.ObjectId,
+        default : ""
     }
 },{
     timestamps : true
 })
 
-const Address = mongoose.model('address', addressSchema)
+const AddressModel = mongoose.model('address',addressSchema)
 
-export default Address;
+export default AddressModel
