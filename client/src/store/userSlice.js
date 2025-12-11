@@ -15,13 +15,13 @@ const initialValue = {
     role : "",
 }
 
-const userSlice = createSlice({
+const userSlice  = createSlice({
     name : 'user',
     initialState : initialValue,
     reducers : {
-        setUserDetails : (state, action) =>{
+        setUserDetails : (state,action) =>{
             state._id = action.payload?._id
-            state.name = action.payload?.name
+            state.name  = action.payload?.name
             state.email = action.payload?.email
             state.avatar = action.payload?.avatar
             state.mobile = action.payload?.mobile
@@ -33,12 +33,12 @@ const userSlice = createSlice({
             state.orderHistory = action.payload?.orderHistory
             state.role = action.payload?.role
         },
-        updatedAvatar : (state, action) =>{
+        updatedAvatar : (state,action)=>{
             state.avatar = action.payload
         },
-        logout : (state, action) =>{
+        logout : (state,action)=>{
             state._id = ""
-            state.name = ""
+            state.name  = ""
             state.email = ""
             state.avatar = ""
             state.mobile = ""
@@ -49,10 +49,10 @@ const userSlice = createSlice({
             state.shopping_cart = []
             state.orderHistory = []
             state.role = ""
-        }
+        },
     }
 })
 
-export const { setUserDetails, logout, updatedAvatar } = userSlice.actions
+export const { setUserDetails, logout ,updatedAvatar} = userSlice.actions
 
 export default userSlice.reducer

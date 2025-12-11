@@ -11,12 +11,12 @@ const cartProductSchema = new mongoose.Schema({
     },
     userId : {
         type : mongoose.Schema.ObjectId,
-        ref : 'User'
-    },
+        ref : "User"
+    }
 },{
     timestamps : true
-});
+})
 
-const CartProductModel = mongoose.model('cartProduct', cartProductSchema);
+const CartProductModel = mongoose.model('cartProduct',cartProductSchema)
 
-export default CartProductModel;
+export default CartProductModel

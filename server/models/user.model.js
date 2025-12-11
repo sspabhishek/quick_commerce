@@ -3,23 +3,23 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
     name : {
         type : String,
-        required : [true, "Please provide a name"]
+        required : [true,"Provide name"]
     },
-    email :{
+    email : {
         type : String,
-        required : [true, "Please provide a email"],
+        required : [true, "provide email"],
         unique : true
     },
     password : {
         type : String,
-        required : [true, "Please provide a password"]
+        required : [true, "provide password"]
     },
     avatar : {
         type : String,
         default : ""
     },
     mobile : {
-        type : String,
+        type : Number,
         default : null
     },
     refresh_token : {
@@ -30,13 +30,13 @@ const userSchema = new mongoose.Schema({
         type : Boolean,
         default : false
     },
-    last_login_date :{
+    last_login_date : {
         type : Date,
         default : ""
     },
     status : {
         type : String,
-        enum : ["Active", "Inactive", "Suspended"],
+        enum : ["Active","Inactive","Suspended"],
         default : "Active"
     },
     address_details : [
@@ -67,14 +67,13 @@ const userSchema = new mongoose.Schema({
     },
     role : {
         type : String,
-        enum : [ "ADMIN","USER"],
+        enum : ['ADMIN',"USER"],
         default : "USER"
     }
-
 },{
     timestamps : true
 })
 
-const UserModel = mongoose.model('User', userSchema)
+const UserModel = mongoose.model("User",userSchema)
 
 export default UserModel

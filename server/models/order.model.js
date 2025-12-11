@@ -7,12 +7,12 @@ const orderSchema = new mongoose.Schema({
     },
     orderId : {
         type : String,
-        required : [true, "  OrderId "],
+        required : [true, "Provide orderId"],
         unique : true
     },
     productId : {
         type : mongoose.Schema.ObjectId,
-        ref : 'product'
+        ref : "product"
     },
     product_details : {
         name : String,
@@ -26,7 +26,7 @@ const orderSchema = new mongoose.Schema({
         type : String,
         default : ""
     },
-    delivery_address :{
+    delivery_address : {
         type : mongoose.Schema.ObjectId,
         ref : 'address'
     },
@@ -41,11 +41,11 @@ const orderSchema = new mongoose.Schema({
     invoice_receipt : {
         type : String,
         default : ""
-    },
+    }
 },{
     timestamps : true
-});
+})
 
-const OrderModel = mongoose.model('order', orderSchema);
+const OrderModel = mongoose.model('order',orderSchema)
 
-export default OrderModel;
+export default OrderModel
