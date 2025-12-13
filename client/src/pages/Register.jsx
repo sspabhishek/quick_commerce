@@ -107,7 +107,7 @@ const Register = () => {
                             <input
                                 type={showPassword ? "text" : "password"}
                                 id='password'
-                                className='w-full outline-none'
+                                className='w-full bg-transparent outline-none'
                                 name='password'
                                 value={data.password}
                                 onChange={handleChange}
@@ -130,7 +130,7 @@ const Register = () => {
                             <input
                                 type={showConfirmPassword ? "text" : "password"}
                                 id='confirmPassword'
-                                className='w-full outline-none'
+                                className='w-full bg-transparent outline-none'
                                 name='confirmPassword'
                                 value={data.confirmPassword}
                                 onChange={handleChange}
