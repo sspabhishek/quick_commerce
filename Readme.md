@@ -105,21 +105,38 @@ Ensure you have the following installed on your system:
 
 ### Backend
 
-Create a `.env` file in the `backend` directory and configure the following variables:
+Create a `.env` file in the `server` directory and configure the following variables:
 
 ```env
-FRONTEND_URL = ""
+FRONTEND_URL=""
 MONGO_URI=<Your MongoDB Atlas URI>
-JWT_SECRET=<Your JWT Secret>
+SECRET_KEY_ACCESS_TOKEN=<Your Access Token Secret>
+SECRET_KEY_REFRESH_TOKEN=<Your Refresh Token Secret>
 CLOUDINARY_CLOUD_NAME=<Your Cloudinary Cloud Name>
 CLOUDINARY_API_KEY=<Your Cloudinary API Key>
 CLOUDINARY_API_SECRET=<Your Cloudinary API Secret>
 RESEND_API_KEY=<Your Resend API Key>
+STRIPE_SECRET_KEY=<Your Stripe Secret Key>
 ```
 
+### Frontend
+
+Create a `.env` file in the `client` directory and configure the following variables:
+
+```env
+VITE_API_URL=<Your Backend API URL>
+VITE_STRIPE_PUBLIC_KEY=<Your Stripe Public Key>
+```
+
+## Test Credentials
+
+For testing payments, you can use the following test card details:
+
+- **Card Number**: `4242424242424242`
+- **Expiry Date**: `01/2028`
+- **CVV**: `789`
+
 ## Future Enhancements
-- Add payment gateway integration.
-- Implement product categories and advanced filtering.
 - Enhance the admin dashboard with analytics.
 - Optimize for mobile devices.
 - Add real-time order tracking with WebSockets.
