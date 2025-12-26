@@ -57,9 +57,11 @@ A full-stack Quick-commerce application inspired by BlinkIt, developed using **N
 
 ---
 
-<!-- ## Screenshots
+## Demo
 
-[Add relevant screenshots or GIFs here, such as the homepage, cart, and admin panel.] -->
+![Demo 1](./Demo%201.gif)
+<br/>
+![Demo 2](./Demo%202.gif)
 
 ---
 
