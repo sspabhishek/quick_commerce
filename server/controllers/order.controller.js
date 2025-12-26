@@ -12,10 +12,13 @@ export async function CashOnDeliveryOrderController(request, response) {
         // Filter out items with missing products
         const validItems = list_items.filter(el => el.productId)
 
+        const orderGroupId = `ORD-GRP-${new mongoose.Types.ObjectId()}`
+
         const payload = validItems.map(el => {
             return ({
                 userId: userId,
                 orderId: `ORD-${new mongoose.Types.ObjectId()}`,
+                orderGroupId: orderGroupId,
                 productId: el.productId._id,
                 product_details: {
                     name: el.productId.name,
@@ -125,16 +128,20 @@ const getOrderProductItems = async ({
     addressId,
     paymentId,
     payment_status,
+    orderTotal,
 }) => {
     const productList = []
 
     if (lineItems?.data?.length) {
+        const orderGroupId = `ORD-GRP-${new mongoose.Types.ObjectId()}`
+
         for (const item of lineItems.data) {
             const product = await Stripe.products.retrieve(item.price.product)
 
             const paylod = {
                 userId: userId,
                 orderId: `ORD-${new mongoose.Types.ObjectId()}`,
+                orderGroupId: orderGroupId,
                 productId: product.metadata.productId,
                 product_details: {
                     name: product.name,
@@ -144,7 +151,7 @@ const getOrderProductItems = async ({
                 payment_status: payment_status,
                 delivery_address: addressId,
                 subTotalAmt: Number(item.amount_total / 100),
-                totalAmt: Number(item.amount_total / 100),
+                totalAmt: orderTotal,
             }
 
             productList.push(paylod)
@@ -174,6 +181,7 @@ export async function webhookStripe(request, response) {
                     addressId: session.metadata.addressId,
                     paymentId: session.payment_intent,
                     payment_status: session.payment_status,
+                    orderTotal: session.amount_total / 100
                 })
 
             const order = await OrderModel.insertMany(orderProduct)
