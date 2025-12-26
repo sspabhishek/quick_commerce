@@ -10,7 +10,7 @@ import AddFieldComponent from '../components/AddFieldComponent';
 import Axios from '../utils/Axios';
 import SummaryApi from '../common/SummaryApi';
 import AxiosToastError from '../utils/AxiosToastError';
-import successAlert from '../utils/SuccessAlert';
+import successAlert from '../utils/successAlert';
 import { useEffect } from 'react';
 
 const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
