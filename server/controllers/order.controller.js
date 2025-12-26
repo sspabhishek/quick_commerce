@@ -9,7 +9,10 @@ export async function CashOnDeliveryOrderController(request, response) {
         const userId = request.userId // auth middleware 
         const { list_items, totalAmt, addressId, subTotalAmt } = request.body
 
-        const payload = list_items.map(el => {
+        // Filter out items with missing products
+        const validItems = list_items.filter(el => el.productId)
+
+        const payload = validItems.map(el => {
             return ({
                 userId: userId,
                 orderId: `ORD-${new mongoose.Types.ObjectId()}`,
@@ -49,6 +52,7 @@ export async function CashOnDeliveryOrderController(request, response) {
 }
 
 export const pricewithDiscount = (price, dis = 1) => {
+    if (!price) return 0;
     const discountAmout = Math.ceil((Number(price) * Number(dis)) / 100)
     const actualPrice = Number(price) - Number(discountAmout)
     return actualPrice
@@ -61,7 +65,10 @@ export async function paymentController(request, response) {
 
         const user = await UserModel.findById(userId)
 
-        const line_items = list_items.map(item => {
+        // Filter out items with missing products
+        const validItems = list_items.filter(item => item.productId)
+
+        const line_items = validItems.map(item => {
             return {
                 price_data: {
                     currency: 'inr',

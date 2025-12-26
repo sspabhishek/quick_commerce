@@ -14,7 +14,7 @@ const AddToCartButton = ({ data }) => {
     const cartItem = useSelector(state => state.cartItem.cart)
     const [isAvailableCart, setIsAvailableCart] = useState(false)
     const [qty, setQty] = useState(0)
-    const [cartItemDetails,setCartItemsDetails] = useState()
+    const [cartItemDetails, setCartItemsDetails] = useState()
 
     const handleADDTocart = async (e) => {
         e.preventDefault()
@@ -46,37 +46,37 @@ const AddToCartButton = ({ data }) => {
 
     }
 
-    //checking this item in cart or not
     useEffect(() => {
-        const checkingitem = cartItem.some(item => item.productId._id === data._id)
+        const checkingitem = cartItem.some(item => item.productId?._id === data?._id)
         setIsAvailableCart(checkingitem)
 
-        const product = cartItem.find(item => item.productId._id === data._id)
+        const product = cartItem.find(item => item.productId?._id === data?._id)
         setQty(product?.quantity)
         setCartItemsDetails(product)
     }, [data, cartItem])
 
 
-    const increaseQty = async(e) => {
+
+    const increaseQty = async (e) => {
         e.preventDefault()
         e.stopPropagation()
-    
-       const response = await  updateCartItem(cartItemDetails?._id,qty+1)
-        
-       if(response.success){
-        toast.success("Item added")
-       }
+
+        const response = await updateCartItem(cartItemDetails?._id, qty + 1)
+
+        if (response.success) {
+            toast.success("Item added")
+        }
     }
 
-    const decreaseQty = async(e) => {
+    const decreaseQty = async (e) => {
         e.preventDefault()
         e.stopPropagation()
-        if(qty === 1){
+        if (qty === 1) {
             deleteCartItem(cartItemDetails?._id)
-        }else{
-            const response = await updateCartItem(cartItemDetails?._id,qty-1)
+        } else {
+            const response = await updateCartItem(cartItemDetails?._id, qty - 1)
 
-            if(response.success){
+            if (response.success) {
                 toast.success("Item remove")
             }
         }
