@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaCloudUploadAlt } from "react-icons/fa";
-import uploadImage from '../utils/UploadImage';
+import uploadImage from '../utils/uploadImage';
 import Loading from '../components/Loading';
 import ViewImage from '../components/ViewImage';
 import { MdDelete } from "react-icons/md";
@@ -13,9 +13,9 @@ import AxiosToastError from '../utils/AxiosToastError';
 import successAlert from '../utils/SuccessAlert';
 import { useEffect } from 'react';
 
-const EditProductAdmin = ({ close ,data : propsData,fetchProductData}) => {
+const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
   const [data, setData] = useState({
-    _id : propsData._id,
+    _id: propsData._id,
     name: propsData.name,
     image: propsData.image,
     category: propsData.category,
@@ -123,7 +123,7 @@ const EditProductAdmin = ({ close ,data : propsData,fetchProductData}) => {
 
       if (responseData.success) {
         successAlert(responseData.message)
-        if(close){
+        if (close) {
           close()
         }
         fetchProductData()
@@ -155,7 +155,7 @@ const EditProductAdmin = ({ close ,data : propsData,fetchProductData}) => {
           <div className='p-2   bg-white shadow-md flex items-center justify-between'>
             <h2 className='font-semibold'>Upload Product</h2>
             <button onClick={close}>
-              <IoClose size={20}/>
+              <IoClose size={20} />
             </button>
           </div>
           <div className='grid p-3'>
