@@ -1,51 +1,56 @@
 import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
-    userId : {
-        type : mongoose.Schema.ObjectId,
-        ref : 'User'
+    userId: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User'
     },
-    orderId : {
-        type : String,
-        required : [true, "Provide orderId"],
-        unique : true
+    orderId: {
+        type: String,
+        required: [true, "Provide orderId"],
+        unique: true
     },
-    productId : {
-        type : mongoose.Schema.ObjectId,
-        ref : "product"
+    orderGroupId: {
+        type: String,
+        required: [true, "Provide orderGroupId"],
+        default: ""
     },
-    product_details : {
-        name : String,
-        image : Array,
+    productId: {
+        type: mongoose.Schema.ObjectId,
+        ref: "product"
     },
-    paymentId : {
-        type : String,
-        default : ""
+    product_details: {
+        name: String,
+        image: Array,
     },
-    payment_status : {
-        type : String,
-        default : ""
+    paymentId: {
+        type: String,
+        default: ""
     },
-    delivery_address : {
-        type : mongoose.Schema.ObjectId,
-        ref : 'address'
+    payment_status: {
+        type: String,
+        default: ""
     },
-    subTotalAmt : {
-        type : Number,
-        default : 0
+    delivery_address: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'address'
     },
-    totalAmt : {
-        type : Number,
-        default : 0
+    subTotalAmt: {
+        type: Number,
+        default: 0
     },
-    invoice_receipt : {
-        type : String,
-        default : ""
+    totalAmt: {
+        type: Number,
+        default: 0
+    },
+    invoice_receipt: {
+        type: String,
+        default: ""
     }
-},{
-    timestamps : true
+}, {
+    timestamps: true
 })
 
-const OrderModel = mongoose.model('order',orderSchema)
+const OrderModel = mongoose.model('order', orderSchema)
 
 export default OrderModel
