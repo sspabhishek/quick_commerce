@@ -137,8 +137,6 @@ For testing payments, you can use the following test card details:
 - **CVV**: `789`
 
 ## Future Enhancements
-- Add payment gateway integration.
-- Implement product categories and advanced filtering.
 - Enhance the admin dashboard with analytics.
 - Optimize for mobile devices.
 - Add real-time order tracking with WebSockets.
